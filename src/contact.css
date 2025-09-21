@@ -1,0 +1,150 @@
+/* -----------------------contact form (matches skills design)----------------------------- */
+.form {
+  min-height: auto;
+  padding-bottom: 30px;
+}
+
+.form center {
+  display: block;
+  margin: 0 50px;
+}
+
+.contact-card {
+    position: relative;
+    border: 1.5px solid #00bfff;
+    border-radius: 4px;
+    padding: 16px 16px 20px;
+    overflow: hidden;
+    z-index: 1;
+    margin: 10px 45px;
+    background: transparent;
+}
+
+/* hover sweep background */
+.contact-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  height: 100%;
+  background: #081b28;
+  z-index: -1;
+  transition: width 500ms;
+  pointer-events: none; /* 👈 add this */
+}
+
+
+
+.contact-card:hover::before {
+  width: 100%;
+}
+
+.section-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.label {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #00bfff;
+}
+
+.contact-card p {
+  margin: 6px 0 12px;
+  font-size: 13px;
+  color: #cdeaff;
+}
+
+/* Labels */
+.contact-card label {
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 6px;
+  color: #e6f7ff;
+}
+
+/* Inputs & textarea: match bar styling with cyan border & dark background */
+.contact-card input[type="text"],
+.contact-card input[type="email"],
+.contact-card textarea {
+  width: 85%;
+  font-size: 13px;
+  color: #ffffff;
+  background: #000e1c;
+  border: 1.5px solid #00bfff;
+  border-radius: 3px;
+  padding: 10px 12px;
+  outline: none;
+  transition: box-shadow 200ms, border-color 200ms;
+}
+
+.contact-card textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Focus glow similar to neon vibe */
+.contact-card input:focus,
+.contact-card textarea:focus {
+  border-color: #33ceff;
+  box-shadow: 0 0 0 3px rgba(0,191,255,0.25);
+}
+
+/* Container for the submit button */
+.container-send {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+#btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1.5px solid #00bfff;
+  border-radius: 4px;
+  padding: 10px 16px;
+  background: #00bfff;
+  color: #ffffff;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 500ms;
+}
+
+#btn:hover {
+
+  border: 1.5px solid #0081ac;
+}
+#btn p#btnText,
+#btn .check-box {
+  position: relative;
+  z-index: 1;
+}
+
+#btn.active {
+  transform: scale(0.98);
+  box-shadow: 0 0 0 3px rgba(0,191,255,0.2);
+}
+
+.check-box {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.check-box svg {
+  width: 18px;
+  height: 18px;
+  stroke: #00bfff;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 600px) {
+  .form center {
+    margin: 0 16px;
+  }
+}
