@@ -5,20 +5,19 @@ import './ProjectCard.css';
 
 const projects = [
   {
-    title: 'Awesome App',
-    description: 'This project does amazing things with magic.',
-    tech: ['React', 'Node.js', 'CSS'],
-    image: 'me.webp',
-    liveLink: '#'
+    title: 'Weather App',
+    description: 'This project enables you to check the weather in your city and other cities around the world.',
+    tech: ['React', 'Tailwind', 'CSS'],
+    image: process.env.PUBLIC_URL + '/image.png',
+    liveLink: 'https://weather-sigma-jet.vercel.app/'
   },
   {
-    title: 'Cool Tool',
-    description: 'A tool that makes your life easier.',
-    tech: ['TypeScript', 'GraphQL', 'Tailwind'],
-    image: 'me.webp',
-    liveLink: '#'
+    title: 'Moviemood',
+    description: 'This project helps you find movies based on your mood.',
+    tech: ['Vite js', 'Tailwind'],
+    image: process.env.PUBLIC_URL + '/image2.png',
+    liveLink: 'https://moviemood-one.vercel.app/?showAll=true'
   },
-  // Add more as needed...
 ];
 
 const ProjectList = () => (

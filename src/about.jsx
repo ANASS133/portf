@@ -39,7 +39,7 @@ const About = () => {
       <div className="about-content">
         <div className="about-img" data-aos="fade-right">
           <div className="circle-ring"></div>
-          <img src="/081b29.png" alt="About" />
+<img src={`${process.env.PUBLIC_URL}/081b29.png`} alt="About" />
         </div>
 
         <div className="about-text" data-aos="fade-left">
