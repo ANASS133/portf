@@ -206,3 +206,72 @@
     margin: 0 16px;
   }
 }
+
+/* Light theme: clean, high-contrast opportunity and contact surfaces */
+html[data-theme="light"] .opportunity-cta {
+  background: linear-gradient(135deg, #ffffff 0%, #f1f8fb 58%, #e4f2f8 100%);
+  border-color: rgba(0, 153, 204, .24);
+  box-shadow: 0 18px 44px rgba(36, 89, 112, .09);
+}
+
+html[data-theme="light"] .opportunity-cta .eyebrow { color: #008ebd; }
+html[data-theme="light"] .opportunity-cta h2 { color: #102e40; }
+html[data-theme="light"] .opportunity-cta p { color: #557384; }
+
+html[data-theme="light"] .opportunity-actions .outline-btn {
+  color: #007fa9 !important;
+  background: rgba(255, 255, 255, .82) !important;
+  border-color: #00a9df !important;
+}
+
+html[data-theme="light"] .contact-intro { color: #557384; }
+
+html[data-theme="light"] .contact-details a,
+html[data-theme="light"] .contact-details > div {
+  color: #17384a;
+  background: #ffffff;
+  border-color: rgba(15, 104, 139, .16);
+  box-shadow: 0 10px 28px rgba(31, 80, 101, .07);
+}
+
+html[data-theme="light"] .contact-details a:hover {
+  background: #f6fbfd;
+  border-color: rgba(0, 169, 223, .55);
+}
+
+html[data-theme="light"] .contact-details small { color: #648191; }
+html[data-theme="light"] .contact-details i { color: #009dce; }
+
+html[data-theme="light"] .contact-card {
+  color: #17384a;
+  background: #ffffff !important;
+  border-color: rgba(15, 104, 139, .16) !important;
+  box-shadow: 0 16px 42px rgba(31, 80, 101, .08) !important;
+}
+
+html[data-theme="light"] .contact-card::before { display: none; }
+html[data-theme="light"] .contact-card h3 { color: #102e40; }
+
+html[data-theme="light"] .contact-card label {
+  color: #365f73 !important;
+  font-weight: 600;
+}
+
+html[data-theme="light"] .contact-card input[type="text"],
+html[data-theme="light"] .contact-card input[type="email"],
+html[data-theme="light"] .contact-card textarea {
+  width: 100%;
+  color: #17384a !important;
+  background: #f8fbfd !important;
+  border: 1px solid rgba(15, 104, 139, .25) !important;
+  border-radius: 7px;
+}
+
+html[data-theme="light"] .contact-card input:focus,
+html[data-theme="light"] .contact-card textarea:focus {
+  background: #ffffff !important;
+  border-color: #00a9df !important;
+  box-shadow: 0 0 0 3px rgba(0, 169, 223, .13);
+}
+
+html[data-theme="light"] .privacy-note { color: #648191 !important; }

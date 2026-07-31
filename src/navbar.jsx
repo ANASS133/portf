@@ -9,6 +9,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [theme, setTheme] = useState(() => localStorage.getItem('portfolioTheme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
   const { t } = useTranslation();
   const toggleMenu = () => setIsOpen(!isOpen);
   useEffect(() => {
@@ -26,6 +27,11 @@ const Header = () => {
     window.addEventListener('scroll', updateHeader, { passive: true });
     return () => window.removeEventListener('scroll', updateHeader);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('portfolioTheme', theme);
+  }, [theme]);
 
     const { i18n } = useTranslation();
   const cycle = ["en", "de"];
@@ -50,6 +56,7 @@ const Header = () => {
 
         <nav className={`nav ${isOpen ? 'nav-open' : ''}`}>
           {navItems.map(([id, label]) => <a key={id} href={`#${id}`} onClick={() => setIsOpen(false)} className={`nav-link ${activeSection === id ? 'active' : ''}`}>{t(label)}</a>)}
+          <button type="button" className="theme-toggle" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? 'Enable light mode' : 'Enable dark mode'} title={theme === 'dark' ? 'Light mode' : 'Dark mode'}><i className={`fa-solid ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} aria-hidden="true"></i></button>
           <button
       type="button"
       onClick={next}

@@ -59,6 +59,7 @@ const Home = () => {
   return (
     <section className="home" id="home" onPointerMove={moveHeroLight}>
       <DigitalRain />
+      <div className="hero-portrait-stage" aria-hidden="true"><i className="portrait-ambient"></i><i className="portrait-circuit"></i><i className="portrait-shadow"></i><img className="hero-cutout" src={`${process.env.PUBLIC_URL}/hero-portrait-transparent.png`} alt="" /><i className="portrait-suit-tone"></i><i className="portrait-ground-fade"></i></div>
       <div className="hero-architecture" aria-hidden="true"><span>React</span><i></i><span>REST API</span><i></i><span>Spring Boot</span><i></i><span>SQL</span></div>
       <div className="home-content">
         <div className="hero-topline"><span>{greeting}</span><button type="button" onClick={() => setProfileOpen(true)}><i className="fa-solid fa-id-card" aria-hidden="true"></i>{t('home.quickProfile')}</button></div>
@@ -79,7 +80,6 @@ const Home = () => {
         <div className="hero-trust"><a href="#experience">{t('home.trustExperience')}</a><a href="#certificates">{t('home.trustGerman')}</a><a href="#certificates">{t('home.trustZab')}</a></div>
         <div className="home-sci"><a href="https://www.linkedin.com/in/anass-sibbi-75778b347/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a><a href="https://wa.me/+212699771759" target="_blank" rel="noreferrer" aria-label="WhatsApp"><i className="fa-brands fa-whatsapp"></i></a><a href="https://github.com/ANASS133" target="_blank" rel="noreferrer" aria-label="GitHub"><i className="fa-brands fa-github"></i></a></div>
       </div>
-      <a className="hero-scroll" href="#about"><span>{t('home.explore')}</span><i className="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
       {profileDrawer}
     </section>
   );

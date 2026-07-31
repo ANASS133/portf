@@ -57,7 +57,5 @@ export default function Journey() {
     <CareerSection id="experience" title={t('journey.experience')} items={filteredExperiences} mode={mode} selected={selectedExperience} setSelected={setSelectedExperience} labels={labels} />
     <CareerSection id="education" title={t('career.educationTitle')} items={filteredEducation} mode={mode} selected={selectedEducation} setSelected={setSelectedEducation} labels={labels} />
 
-    <section className="career-progression" aria-label={t('career.progressLabel')}><span>{t('career.foundation')}</span><i></i><span>{t('career.experienceStage')}</span><i></i><span className="active">{t('career.specialization')}</span><i></i><span>{t('career.germany')}</span></section>
-    <p className="career-closing"><i className="fa-solid fa-link" aria-hidden="true"></i>{t('career.closing')}</p>
   </div>;
 }
