@@ -1,53 +1,60 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './nav.css';
 import { useTranslation } from 'react-i18next';
 
 const About = () => {
   const { t } = useTranslation();
-
-  useEffect(() => {
-    const options = {
-      threshold: 0.3, 
-    };
-
-    const callback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (entry.target.classList.contains('about-img')) {
-            entry.target.classList.add('animate-left');
-          } else if (entry.target.classList.contains('about-text')) {
-            entry.target.classList.add('animate-right');
-          }
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(callback, options);
-    const targets = document.querySelectorAll('.about-img, .about-text');
-
-    targets.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  const valueCards = t('about.valueCards', { returnObjects: true });
+  const principles = t('about.principles', { returnObjects: true });
+  const journey = t('about.journey', { returnObjects: true });
+  const faq = t('about.faq', { returnObjects: true });
 
   return (
     <section className="about" id="about">
-      <h2 className="section-title">
-        {t("about.title")} <span>{t("about.titleSpan")}</span>
-      </h2>
+      <h2 className="section-title">{t('about.title')} <span>{t('about.titleSpan')}</span></h2>
 
-      <div className="about-content">
-        <div className="about-img" data-aos="fade-right">
-          <div className="circle-ring"></div>
-<img src={`${process.env.PUBLIC_URL}/081b29.png`} alt="About" />
-        </div>
-
-        <div className="about-text" data-aos="fade-left">
-          <h3>{t("about.role")}</h3>
-          <p>{t("about.text")}</p>
-          <p className="qualification"><i className="fa-solid fa-certificate" aria-hidden="true"></i> {t("about.qualification")}</p>
+      <div className="about-intro">
+        <figure className="about-portrait">
+          <div className="portrait-orbit" aria-hidden="true"><i></i><i></i></div>
+          <img src={`${process.env.PUBLIC_URL}/081b29.png`} alt={t('about.photoAlt')} loading="lazy" />
+          <figcaption><i className="fa-solid fa-location-dot" aria-hidden="true"></i> Casablanca, Morocco</figcaption>
+        </figure>
+        <div className="about-summary">
+          <span className="about-eyebrow">{t('about.eyebrow')}</span>
+          <h3>{t('about.role')}</h3>
+          <p className="about-lead">{t('about.lead')}</p>
+          <p>{t('about.text')}</p>
+          <div className="about-evidence">
+            <a href="#experience"><i className="fa-solid fa-briefcase" aria-hidden="true"></i>{t('about.evidenceExperience')}</a>
+            <a href="#certificates"><i className="fa-solid fa-language" aria-hidden="true"></i>{t('about.evidenceGerman')}</a>
+            <a href="#certificates"><i className="fa-solid fa-certificate" aria-hidden="true"></i>{t('about.evidenceZab')}</a>
+            <a href="#education"><i className="fa-solid fa-shield-halved" aria-hidden="true"></i>{t('about.evidenceStudy')}</a>
+          </div>
         </div>
       </div>
+
+      <div className="about-value-grid">
+        {valueCards.map((card) => <article key={card.title}><i className={`fa-solid ${card.icon}`} aria-hidden="true"></i><h3>{card.title}</h3><ul>{card.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}
+      </div>
+
+      <div className="about-principles">
+        <div className="principles-copy"><span className="about-eyebrow">{t('about.principlesEyebrow')}</span><h3>{t('about.principlesTitle')}</h3><p>{t('about.principlesIntro')}</p></div>
+        <div className="principle-grid">{principles.map((principle) => <article key={principle.title}><i className={`fa-solid ${principle.icon}`} aria-hidden="true"></i><div><h4>{principle.title}</h4><p>{principle.text}</p></div></article>)}</div>
+      </div>
+
+      <div className="about-journey">
+        <span className="about-eyebrow">{t('about.journeyEyebrow')}</span><h3>{t('about.journeyTitle')}</h3>
+        <div className="journey-track">{journey.map((step, index) => <React.Fragment key={step.title}>{index > 0 && <i className="journey-arrow fa-solid fa-arrow-right" aria-hidden="true"></i>}<article><span>{String(index + 1).padStart(2, '0')}</span><h4>{step.title}</h4><p>{step.text}</p></article></React.Fragment>)}</div>
+      </div>
+
+      <div className="about-lower-grid">
+        <article className="why-germany"><span className="about-eyebrow">{t('about.whyEyebrow')}</span><h3>{t('about.whyTitle')}</h3><p>{t('about.whyText')}</p><p className="human-note"><i className="fa-solid fa-heart" aria-hidden="true"></i>{t('about.personal')}</p></article>
+        <div className="profile-orbit" aria-label={t('about.profileDiagram')}><span className="orbit-center">Anass<br />Sibbi</span><span className="orbit-node node-security">{t('about.security')}</span><span className="orbit-node node-web">Web</span><span className="orbit-node node-mobile">Mobile</span><span className="orbit-node node-german">Deutsch B2</span></div>
+      </div>
+
+      <div className="about-faq"><span className="about-eyebrow">{t('about.faqEyebrow')}</span><h3>{t('about.faqTitle')}</h3>{faq.map((item) => <details key={item.question}><summary>{item.question}<i className="fa-solid fa-plus" aria-hidden="true"></i></summary><p>{item.answer}</p></details>)}</div>
+
+      <div className="about-cta"><div><span className="about-eyebrow">{t('about.ctaEyebrow')}</span><h3>{t('about.ctaTitle')}</h3></div><div><a href="#experience" className="primary-btn">{t('about.viewExperience')}</a><a href={`${process.env.PUBLIC_URL}/weg.pdf`} download className="outline-btn">{t('about.downloadCv')}</a><a href="#contact" className="about-contact-link">{t('about.contact')} <i className="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div></div>
     </section>
   );
 };
