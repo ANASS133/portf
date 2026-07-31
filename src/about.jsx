@@ -45,8 +45,7 @@ const About = () => {
         <div className="about-text" data-aos="fade-left">
           <h3>{t("about.role")}</h3>
           <p>{t("about.text")}</p>
-
-          <a href="#more" className="btn">{t("about.readMore")}</a>
+          <p className="qualification"><i className="fa-solid fa-certificate" aria-hidden="true"></i> {t("about.qualification")}</p>
         </div>
       </div>
     </section>

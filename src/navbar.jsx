@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './nav.css';
 import { useTranslation } from 'react-i18next';
+
+const navItems = [['home', 'header.home'], ['about', 'header.about'], ['experience', 'header.experience'], ['education', 'header.education'], ['skills', 'header.skills'], ['portfolio', 'header.projects'], ['certificates', 'header.certificates'], ['contact', 'header.contact']];
 
 const Header = () => {
   
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const { t } = useTranslation();
   const toggleMenu = () => setIsOpen(!isOpen);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActiveSection(visible.target.id);
+    }, { rootMargin: '-25% 0px -60% 0px', threshold: [0, 0.2, 0.5] });
+    navItems.forEach(([id]) => { const section = document.getElementById(id); if (section) observer.observe(section); });
+    return () => observer.disconnect();
+  }, []);
 
     const { i18n } = useTranslation();
   const cycle = ["en", "de"];
@@ -24,16 +35,12 @@ const Header = () => {
         </h1>
 
         {/* Menu icon for mobile */}
-        <div className="menu-icon" onClick={toggleMenu}>
+        <button className="menu-icon" onClick={toggleMenu} aria-label="Toggle navigation" aria-expanded={isOpen}>
           <i className="fa-solid fa-bars"></i>
-        </div>
+        </button>
 
         <nav className={`nav ${isOpen ? 'nav-open' : ''}`}>
-          <a href="#home" className="nav-link active">{t("header.home")}</a>
-          <a href="#about" className="nav-link">{t("header.about")}</a>
-          <a href="#services" className="nav-link">{t("header.services")}</a>
-          <a href="#portfolio" className="nav-link">{t("header.portfolio")}</a>
-          <a href="#contact" className="nav-link">{t("header.contact")}</a>
+          {navItems.map(([id, label]) => <a key={id} href={`#${id}`} onClick={() => setIsOpen(false)} className={`nav-link ${activeSection === id ? 'active' : ''}`}>{t(label)}</a>)}
           <button
       type="button"
       onClick={next}

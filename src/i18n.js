@@ -1,280 +1,74 @@
-// src/i18n.js
-"use client";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-// Keep last chosen language (optional)
 const stored = typeof window !== "undefined" ? localStorage.getItem("lang") : null;
+const browserLanguage = typeof navigator !== "undefined" && navigator.language?.toLowerCase().startsWith("de") ? "de" : "en";
 
-i18n.use(initReactI18next).init({
-  resources: {
-    en: {
-      translation: {
-        // --- Header ---
-        header: {
-        home: "Home",
-        portfolio: "About",
-        services: "Journey",
-        about: "skills",  
-        contact: "Contact",
-        },
-
-        // --- Home ---
-        home: {
-          hi: "Hi, I'm Anass Sibbi",
-          role: "Full Stack Developer",
-          text: "I love turning data into smart solutions",
-          hire: "Hire Me",
-          talk: "Let's Talk",
-          download: "Download CV",
-        },
-
-        // --- About ---
-        about: {
-          title: "About",
-          titleSpan: "Me",
-          role: "Fullstack Developer!",
-          text:
-            "I am a 20-year-old aspiring professional from Settat, Morocco. With a passion for technology and digital development, I strive to expand my skills and contribute to innovative projects. I love creating smooth, responsive user interfaces that provide meaningful experiences.",
-          readMore: "Read More",
-        },
-
-        // --- Skills ---
-        skills: {
-          my: "My",
-          titleSpan: "Skills",
-          backend: "Back-end",
-          frontend: "Front-end",
-          php: "PHP",
-          sql: "SQL",
-          laravel: "Laravel",
-          mongodb: "MongoDB",
-          html: "HTML",
-          css: "CSS - Bootstrap",
-          js: "JavaScript",
-          react: "React",
-        },
-
-        // --- Journey ---
-        journey: {
-          my: "My",
-          titleSpan: "Journey",
-          education: "Education",
-          experience: "Professional Experience",
-
-          edu1: {
-            date: "Sep 2024 – Jun 2025 (in progress)",
-            title: "Bachelor of Excellence in Digital Security and Law",
-            subtitle: "Université Hassan 1er, Settat – Morocco",
-            items: [
-              "Personal data protection",
-              "E-Government administration",
-              "Information systems security",
-              "Digital contractual practices",
-            ],
-          },
-          edu2: {
-            date: "Sep 2022 – Jul 2024",
-            title: "Specialized Technician in Digital Development",
-            subtitle: "ISTA 2, Settat – Morocco",
-            items: [
-              "Front-end and back-end development",
-              "Data management",
-              "Agile approach",
-            ],
-          },
-          edu3: {
-            date: "Sep 2021 – Jun 2022",
-            title: "Baccalaureate in Life and Earth Sciences",
-            subtitle: "Lycée Al Amal, Settat – Morocco",
-            items: [
-              "Physics",
-              "Mathematics",
-              "Life and earth sciences",
-              "English, French",
-            ],
-          },
-
-          exp1: {
-            date: "Dec 2024 – Apr 2025",
-            title: "Freelance Web Developer",
-            subtitle: "",
-            items: [
-              "Design, development, and maintenance of websites in React",
-              "Use of Git and GitHub for versioning",
-            ],
-          },
-          exp2: {
-            date: "Apr 2024 – May 2024",
-            title: "Web Development Internship",
-            subtitle: "Batihold GmbH, Casablanca – Morocco",
-            items: [
-              "Website development with Laravel",
-              "Version control and maintenance",
-            ],
-          },
-          exp3: {
-  date: "Jui 2025 –  Now",
-  title: "Customer Support at Shein.de",
-  subtitle: "Outsourcia, Casablanca – Morocco",
-  items: [
-    "Enhanced communication skills and improved proficiency in the German language",
-    "Handled customer inquiries and provided appropriate solutions",
-  ],
-},
-
-        },
-
-        // --- Contact form ---
-        sendEmail: "Send Email",
-        name: "Name",
-        email: "Email",
-        message: "Message",
-        submit: "Submit",
-        sending: "Sending...",
-        success: "Message sent — thank you.",
-        error: "Failed to send: {{error}}",
-      },
-    },
-
-    de: {
-      translation: {
-        // --- Header ---
-            header: {
-      home: "Startseite",
-      portfolio: "Über mich", 
-      services: "Werdegang",   
-      about: "Fähigkeiten",    
-      contact: "Kontakt",
-    },
-        // --- Home ---
-        home: {
-          hi: "Hallo, ich bin Anass Sibbi",
-          role: "Full-Stack Developer",
-          text: "Ich liebe es, Daten in intelligente Lösungen zu verwandeln",
-          hire: "Einstellen",
-          talk: "Lass uns reden",
-          download: "Lebenslauf herunterladen",
-        },
-
-        // --- Über mich ---
-        about: {
-          title: "Über",
-          titleSpan: "Mich",
-          role: "Fullstack-Entwickler!",
-          text:
-            "Ich bin ein 20-jähriger angehender Fachmann aus Settat, Marokko. Mit einer Leidenschaft für Technologie und digitale Entwicklung möchte ich meine Fähigkeiten erweitern und zu innovativen Projekten beitragen. Ich liebe es, flüssige, responsive Benutzeroberflächen zu erstellen, die bedeutungsvolle Erlebnisse bieten.",
-          readMore: "Mehr erfahren",
-        },
-
-        // --- Fähigkeiten ---
-        skills: {
-          my: "Meine",
-          titleSpan: "Fähigkeiten",
-          backend: "Back-end",
-          frontend: "Front-end",
-          php: "PHP",
-          sql: "SQL",
-          laravel: "Laravel",
-          mongodb: "MongoDB",
-          html: "HTML",
-          css: "CSS - Bootstrap",
-          js: "JavaScript",
-          react: "React",
-        },
-
-        // --- Werdegang ---
-        journey: {
-          my: "Mein",
-          titleSpan: "Werdegang",
-          education: "Ausbildung",
-          experience: "Berufserfahrung",
-
-          edu1: {
-            date: "Sep 2024 – Jun 2025 (laufend)",
-            title: "Lizenz für Exzellenz in Digitaler Sicherheit und Recht",
-            subtitle: "Université Hassan 1er, Settat – Marokko",
-            items: [
-              "Schutz personenbezogener Daten",
-              "Elektronische Verwaltung",
-              "Sicherheit von Informationssystemen",
-              "Digitale Vertragspraktiken",
-            ],
-          },
-          edu2: {
-            date: "Sep 2022 – Jul 2024",
-            title: "Fachtechniker in Digitaler Entwicklung",
-            subtitle: "ISTA 2, Settat – Marokko",
-            items: [
-              "Front- und Back-End-Entwicklung",
-              "Datenverwaltung",
-              "Agile Methoden",
-            ],
-          },
-          edu3: {
-            date: "Sep 2021 – Jun 2022",
-            title: "Abitur in Naturwissenschaften",
-            subtitle: "Lycée Al Amal, Settat – Marokko",
-            items: [
-              "Physik",
-              "Mathematik",
-              "Naturwissenschaften",
-              "Englisch, Französisch",
-            ],
-          },
-
-          exp1: {
-            date: "Dez 2024 – Apr 2025",
-            title: "Freiberuflicher Webentwickler",
-            subtitle: "",
-            items: [
-              "Konzeption, Entwicklung und Pflege von Websites mit React",
-              "Verwendung von Git und GitHub für Versionierung",
-            ],
-          },
-          exp2: {
-            date: "Apr 2024 – Mai 2024",
-            title: "Praktikum Webentwicklung",
-            subtitle: "Batihold GmbH, Casablanca – Marokko",
-            items: [
-              "Website-Entwicklung mit Laravel",
-              "Versionskontrolle und Wartung",
-            ],
-          },
-          exp3: {
-  date: "Jui 2025 – Jetzt",
-  title: "Kundenbetreuung bei Shein.de",
-  subtitle: "Outsourcia, Casablanca – Marokko",
-  items: [
-    "Vertiefung und Verbesserung der Kommunikationsfähigkeiten sowie der deutschen Sprache",
-    "Bearbeitung von Kundenanfragen und Anbieten passender Lösungen",
-  ],
-},
-
-        },
-
-        // --- Kontaktformular ---
-        sendEmail: "E-Mail senden",
-        name: "Name",
-        email: "E-Mail",
-        message: "Nachricht",
-        submit: "Absenden",
-        sending: "Senden...",
-        success: "Nachricht gesendet — vielen Dank.",
-        error: "Senden fehlgeschlagen: {{error}}",
-      },
-    },
+const en = {
+  header: { home: "Home", about: "About", experience: "Experience", education: "Education", skills: "Skills", projects: "Projects", certificates: "Certificates", contact: "Contact" },
+  home: { badge: "Open to Ausbildung opportunities in Germany", hi: "Hi, I'm Anass Sibbi", role: "Software Developer | Full-Stack Developer", text: "I build secure web and mobile applications for real-world needs.", projects: "View Projects", contact: "Contact Me", download: "Download German CV" },
+  highlights: { label: "Professional profile highlights", items: [{ icon: "fa-code", title: "Full-Stack Development", text: "Secure web and mobile applications" }, { icon: "fa-building-columns", title: "Public-Sector Experience", text: "Reliable tools for administrative processes" }, { icon: "fa-language", title: "German B2", text: "Certified by telc" }] },
+  availability: { relocation: "Open to relocation", german: "German B2", interviews: "Available for interviews" },
+  about: { title: "About", titleSpan: "Me", role: "Full-Stack Developer", text: "I am a software developer from Morocco with professional experience in building secure web and mobile applications. I work with technologies such as React, Spring Boot, Flutter, Laravel, Java, JavaScript, PHP, SQL, and MongoDB. I enjoy learning new technologies, solving practical problems, and developing reliable applications for companies and public administration.", qualification: "My professional qualification is officially recognized in Morocco and confirmed by a ZAB statement." },
+  journey: {
+    experience: "Professional Experience", education: "Education", present: "Present", completed: "Completed",
+    exp0: { date: "November 2025 - Present", title: "Software Developer", subtitle: "Moroccan Ministry of Interior, Province of Settat - Morocco", items: ["Development and maintenance of secure web and mobile applications for internal administrative processes.", "Development of a platform for monitoring public projects, including progress tracking and photo documentation.", "Development of a meeting management platform with task management and Gantt charts.", "Development of an Android TV application for meeting rooms.", "Integration of applications with secure servers and VPN connections."] },
+    exp1: { date: "July 2025 - November 2025", title: "German Customer Support Representative", subtitle: "Outsourcia, Casablanca - Morocco", items: ["Supported German-speaking customers by phone and email.", "Handled customer requests and provided appropriate solutions.", "Used German daily in a professional environment."] },
+    exp2: { date: "December 2024 - April 2025", title: "Freelance Full-Stack Developer", subtitle: "", items: ["Development and maintenance of web applications using React and Laravel.", "Version control and project management using Git and GitHub."] },
+    exp3: { date: "April 2024 - May 2024", title: "Web Development Intern", subtitle: "Batihold GmbH, Casablanca - Morocco", items: ["Development of a Laravel web application.", "Implementation of CRUD functions.", "Use of Git and GitHub for version control."] },
+    edu0: { date: "September 2025 - Present", title: "Cybersecurity Engineering Studies, Part-Time", subtitle: "Hightech, Rabat - Morocco", items: ["Information security", "Network security", "Secure software development"] },
+    edu1: { date: "September 2024 - June 2025", title: "Excellence Bachelor's Degree in Digital Law and Digital Security", subtitle: "Hassan I University, Settat - Morocco · Completed", items: ["Information systems security", "Personal data protection", "Electronic administration", "Digital contractual practices"] },
+    edu2: { date: "September 2022 - July 2024", title: "Specialized Technician Diploma in Digital Development, Web Full Stack", subtitle: "ISTA 2 - OFPPT, Settat - Morocco", items: ["Front-end and back-end development", "Database management", "Agile development methods"] },
+    edu3: { date: "September 2021 - June 2022", title: "Baccalaureate in Life and Earth Sciences", subtitle: "Al Amal High School, Settat - Morocco", items: [] }
   },
-  lng: stored || "en",
-  fallbackLng: "en",
-  interpolation: { escapeValue: false },
-});
+  skills: { my: "Technical", titleSpan: "Skills", groups: [{ title: "Front-End", items: ["HTML", "CSS", "JavaScript", "React", "Responsive Design"] }, { title: "Back-End", items: ["Java", "Spring Boot", "PHP", "Laravel", "Python", "REST APIs"] }, { title: "Mobile", items: ["Flutter", "Dart", "Android"] }, { title: "Databases", items: ["SQL", "MongoDB"] }, { title: "Tools", items: ["Git", "GitHub", "Swagger/OpenAPI", "Figma", "UML", "Jira"] }] },
+  projects: { title: "Featured", titleSpan: "Projects", visit: "View project", private: "Private professional project", details: "View case study", problem: "Purpose", contribution: "My contribution", architecture: "Architecture", items: [
+    { title: "Weather App", description: "A responsive React application for checking current weather information by city.", purpose: "Make current city weather quick and easy to check on any device.", contribution: "Built the responsive interface and connected it to a weather data API.", architecture: "React → Weather API", tech: ["React", "JavaScript", "CSS", "Weather API"] },
+    { title: "MovieMood", description: "A web application that suggests movies based on the user's current mood.", purpose: "Help users discover relevant films through a simple mood-based experience.", contribution: "Developed the React interface, recommendation flow, and responsive presentation.", architecture: "React + Vite → Movie data", tech: ["React", "Vite", "JavaScript", "CSS"] },
+    { title: "Public Project Monitoring Platform", description: "A secure web and mobile platform used to monitor the progress of public projects and organize field photo documentation.", purpose: "Centralize project progress and structured field documentation.", contribution: "Developed web and mobile features and integrated them with secure backend services.", architecture: "React / Flutter → REST API → Spring Boot → SQL", tech: ["React", "Spring Boot", "Flutter", "REST API", "SQL"] },
+    { title: "Meeting Management Platform", description: "A platform for managing meetings, participants, instructions, tasks, recordings, and project schedules using Gantt charts.", purpose: "Bring meeting information, follow-up tasks, and schedules into one workflow.", contribution: "Implemented management interfaces, task workflows, and Gantt-based scheduling features.", architecture: "React / Flutter → REST API → Spring Boot → MongoDB", tech: ["React", "Spring Boot", "Flutter", "MongoDB", "REST API"] },
+    { title: "Android TV Meeting Application", description: "An Android TV application designed for meeting rooms, allowing users to display and manage active meetings from a television interface.", purpose: "Present active meeting information clearly on shared room displays.", contribution: "Created the television interface and connected it to meeting services.", architecture: "Flutter for Android TV → REST API", tech: ["Flutter", "Android TV", "REST API"] }
+  ] },
+  credentials: { languages: "Languages", certificates: "Certificates", languageItems: ["Arabic: Native", "German: B2, telc certificate", "English: B1", "French: B2"], certificateItems: ["telc German B2 - Grade ‘Good’, 2024", "ZAB Statement on Professional Qualification, 2025", "Python Essentials 1 - Cisco Networking Academy, 2024", "Advanced Microsoft Excel - Hassan I University, 2026", "Artificial Intelligence and LaTeX - Hassan I University, 2026", "Mobile Application Development Training, 2026"] },
+  contact: { title: "Get In", titleSpan: "Touch", intro: "Have a project or opportunity in mind? Send me a message.", location: "Casablanca, Morocco" },
+  opportunity: { title: "Ready for my next opportunity in Germany", text: "I am open to Ausbildung and software-development opportunities and willing to relocate to Germany.", email: "Contact me", cv: "German CV" },
+  privacy: "By submitting this form, you agree that your details may be used to reply to your message. Your information is not published or shared for marketing purposes.",
+  sendEmail: "Send a Message", name: "Name", email: "Email", message: "Message", submit: "Submit", sent: "Message sent", sending: "Sending...", success: "Message sent — thank you.", error: "Failed to send: {{error}}"
+};
 
-// Persist language change
-i18n.on("languageChanged", (lng) => {
-  try {
-    localStorage.setItem("lang", lng);
-  } catch {}
-});
+const de = {
+  header: { home: "Start", about: "Über mich", experience: "Berufserfahrung", education: "Ausbildung", skills: "Kenntnisse", projects: "Projekte", certificates: "Zertifikate", contact: "Kontakt" },
+  home: { badge: "Offen für Ausbildungsmöglichkeiten in Deutschland", hi: "Hallo, ich bin Anass Sibbi", role: "Softwareentwickler | Full-Stack-Entwickler", text: "Ich entwickle sichere Web- und Mobile-Anwendungen für praktische Anforderungen.", projects: "Projekte ansehen", contact: "Kontakt", download: "Deutschen Lebenslauf herunterladen" },
+  highlights: { label: "Berufliche Profilübersicht", items: [{ icon: "fa-code", title: "Full-Stack-Entwicklung", text: "Sichere Web- und Mobile-Anwendungen" }, { icon: "fa-building-columns", title: "Erfahrung im öffentlichen Dienst", text: "Zuverlässige Lösungen für Verwaltungsprozesse" }, { icon: "fa-language", title: "Deutsch B2", text: "Mit telc-Zertifikat" }] },
+  availability: { relocation: "Umzugsbereit", german: "Deutsch B2", interviews: "Für Gespräche verfügbar" },
+  about: { title: "Über", titleSpan: "Mich", role: "Full-Stack-Entwickler", text: "Ich bin Softwareentwickler aus Marokko und habe Berufserfahrung in der Entwicklung sicherer Web- und Mobile-Anwendungen. Ich arbeite unter anderem mit React, Spring Boot, Flutter, Laravel, Java, JavaScript, PHP, SQL und MongoDB. Ich lerne gerne neue Technologien, löse praktische Probleme und entwickle zuverlässige Anwendungen für Unternehmen und die öffentliche Verwaltung.", qualification: "Meine Berufsqualifikation ist in Marokko staatlich anerkannt und wurde durch eine ZAB-Auskunft bestätigt." },
+  journey: {
+    experience: "Berufserfahrung", education: "Ausbildung", present: "Heute", completed: "Abgeschlossen",
+    exp0: { date: "November 2025 - Heute", title: "Softwareentwickler", subtitle: "Marokkanisches Innenministerium, Provinz Settat - Marokko", items: ["Entwicklung und Wartung sicherer Web- und Mobile-Anwendungen für interne Verwaltungsprozesse.", "Entwicklung einer Plattform zur Überwachung öffentlicher Projekte mit Fortschrittsverfolgung und Fotodokumentation.", "Entwicklung einer Meeting-Management-Plattform mit Aufgabenverwaltung und Gantt-Diagrammen.", "Entwicklung einer Android-TV-Anwendung für Besprechungsräume.", "Anbindung interner Anwendungen an sichere Server- und VPN-Verbindungen."] },
+    exp1: { date: "Juli 2025 - November 2025", title: "Mitarbeiter im deutschsprachigen Kundenservice", subtitle: "Outsourcia, Casablanca - Marokko", items: ["Betreuung deutschsprachiger Kunden per Telefon und E-Mail.", "Bearbeitung von Kundenanfragen und Finden passender Lösungen.", "Tägliche Kommunikation in deutscher Sprache."] },
+    exp2: { date: "Dezember 2024 - April 2025", title: "Freiberuflicher Full-Stack-Entwickler", subtitle: "", items: ["Entwicklung und Wartung von Webanwendungen mit React und Laravel.", "Versionskontrolle und Projektverwaltung mit Git und GitHub."] },
+    exp3: { date: "April 2024 - Mai 2024", title: "Praktikant Webentwicklung", subtitle: "Batihold GmbH, Casablanca - Marokko", items: ["Entwicklung einer Laravel-Webanwendung.", "Umsetzung von CRUD-Funktionen.", "Nutzung von Git und GitHub zur Versionskontrolle."] },
+    edu0: { date: "September 2025 - Heute", title: "Ingenieurstudium Cybersicherheit, berufsbegleitend", subtitle: "Hightech, Rabat - Marokko", items: ["Informationssicherheit", "Netzwerksicherheit", "Sichere Softwareentwicklung"] },
+    edu1: { date: "September 2024 - Juni 2025", title: "Exzellenz-Lizenz in Digitalrecht und digitaler Sicherheit", subtitle: "Universität Hassan I, Settat - Marokko · Abgeschlossen", items: ["Sicherheit von Informationssystemen", "Schutz personenbezogener Daten", "Elektronische Verwaltung", "Digitale Vertragspraktiken"] },
+    edu2: { date: "September 2022 - Juli 2024", title: "Fachtechniker-Diplom - Digitale Entwicklung, Schwerpunkt Web Full Stack", subtitle: "ISTA 2 - OFPPT, Settat - Marokko", items: ["Front-End- und Back-End-Entwicklung", "Datenbankverwaltung", "Agile Entwicklungsmethoden"] },
+    edu3: { date: "September 2021 - Juni 2022", title: "Abitur in Lebens- und Geowissenschaften", subtitle: "Al Amal Gymnasium, Settat - Marokko", items: [] }
+  },
+  skills: { my: "Technische", titleSpan: "Kenntnisse", groups: [{ title: "Front-End", items: ["HTML", "CSS", "JavaScript", "React", "Responsives Design"] }, { title: "Back-End", items: ["Java", "Spring Boot", "PHP", "Laravel", "Python", "REST APIs"] }, { title: "Mobile", items: ["Flutter", "Dart", "Android"] }, { title: "Datenbanken", items: ["SQL", "MongoDB"] }, { title: "Werkzeuge", items: ["Git", "GitHub", "Swagger/OpenAPI", "Figma", "UML", "Jira"] }] },
+  projects: { title: "Ausgewählte", titleSpan: "Projekte", visit: "Projekt ansehen", private: "Internes berufliches Projekt", details: "Fallstudie ansehen", problem: "Zweck", contribution: "Mein Beitrag", architecture: "Architektur", items: [
+    { title: "Weather App", description: "Eine responsive React-Anwendung zur Anzeige aktueller Wetterinformationen nach Stadt.", purpose: "Aktuelle Wetterdaten für jede Stadt schnell und mobil zugänglich machen.", contribution: "Responsive Oberfläche entwickelt und mit einer Wetter-API verbunden.", architecture: "React → Wetter-API", tech: ["React", "JavaScript", "CSS", "Weather API"] },
+    { title: "MovieMood", description: "Eine Webanwendung, die Filme passend zur aktuellen Stimmung vorschlägt.", purpose: "Nutzern eine einfache, stimmungsbasierte Filmsuche ermöglichen.", contribution: "React-Oberfläche, Empfehlungsablauf und responsive Darstellung entwickelt.", architecture: "React + Vite → Filmdaten", tech: ["React", "Vite", "JavaScript", "CSS"] },
+    { title: "Plattform zur Überwachung öffentlicher Projekte", description: "Eine sichere Web- und Mobile-Plattform zur Fortschrittskontrolle öffentlicher Projekte und Organisation der Fotodokumentation.", purpose: "Projektfortschritt und Felddokumentation zentral organisieren.", contribution: "Web- und Mobile-Funktionen entwickelt und mit sicheren Backend-Diensten verbunden.", architecture: "React / Flutter → REST API → Spring Boot → SQL", tech: ["React", "Spring Boot", "Flutter", "REST API", "SQL"] },
+    { title: "Meeting-Management-Plattform", description: "Eine Plattform zur Verwaltung von Meetings, Teilnehmern, Anweisungen, Aufgaben, Aufzeichnungen und Zeitplänen mit Gantt-Diagrammen.", purpose: "Meetingdaten, Aufgaben und Zeitpläne in einem Arbeitsablauf zusammenführen.", contribution: "Verwaltungsoberflächen, Aufgabenabläufe und Gantt-Planung umgesetzt.", architecture: "React / Flutter → REST API → Spring Boot → MongoDB", tech: ["React", "Spring Boot", "Flutter", "MongoDB", "REST API"] },
+    { title: "Android-TV-Anwendung für Meetings", description: "Eine Android-TV-Anwendung zur Anzeige und Verwaltung aktiver Meetings in Besprechungsräumen.", purpose: "Aktive Meetinginformationen auf gemeinsamen Bildschirmen klar anzeigen.", contribution: "TV-Oberfläche entwickelt und mit Meeting-Diensten verbunden.", architecture: "Flutter für Android TV → REST API", tech: ["Flutter", "Android TV", "REST API"] }
+  ] },
+  credentials: { languages: "Sprachen", certificates: "Zertifikate", languageItems: ["Arabisch: Muttersprache", "Deutsch: B2, telc-Zertifikat", "Englisch: B1", "Französisch: B2"], certificateItems: ["telc Deutsch B2 - Note „Gut“, 2024", "ZAB-Auskunft zur Berufsqualifikation, 2025", "Python Essentials 1 - Cisco Networking Academy, 2024", "Microsoft Excel für Fortgeschrittene - Universität Hassan I, 2026", "Künstliche Intelligenz und LaTeX - Universität Hassan I, 2026", "Weiterbildung Mobile Anwendungsentwicklung, 2026"] },
+  contact: { title: "Kontakt", titleSpan: "Aufnehmen", intro: "Sie haben ein Projekt oder eine berufliche Möglichkeit? Schreiben Sie mir.", location: "Casablanca, Marokko" },
+  opportunity: { title: "Bereit für meine nächste Chance in Deutschland", text: "Ich bin offen für Ausbildungs- und Softwareentwicklungsstellen und bereit, nach Deutschland umzuziehen.", email: "Kontakt aufnehmen", cv: "Deutscher Lebenslauf" },
+  privacy: "Mit dem Absenden stimmen Sie zu, dass Ihre Angaben zur Beantwortung Ihrer Nachricht verwendet werden. Ihre Daten werden nicht veröffentlicht oder für Marketingzwecke weitergegeben.",
+  sendEmail: "Nachricht senden", name: "Name", email: "E-Mail", message: "Nachricht", submit: "Absenden", sent: "Nachricht gesendet", sending: "Wird gesendet...", success: "Nachricht gesendet — vielen Dank.", error: "Senden fehlgeschlagen: {{error}}"
+};
+
+i18n.use(initReactI18next).init({ resources: { en: { translation: en }, de: { translation: de } }, lng: stored || browserLanguage, fallbackLng: "en", interpolation: { escapeValue: false } });
+i18n.on("languageChanged", (lng) => { try { localStorage.setItem("lang", lng); document.documentElement.lang = lng; } catch (_) {} });
 
 export default i18n;

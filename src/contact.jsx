@@ -43,13 +43,23 @@ export default function ContactEmailJS() {
   };
 
   return (
-    <center>
-      <div className="form">
-        <h2 className="section-title">
-          {t("sendEmail")}
-        </h2>
+    <section className="form" id="contact">
+        <div className="opportunity-cta">
+          <div><span className="eyebrow">Germany</span><h2>{t("opportunity.title")}</h2><p>{t("opportunity.text")}</p></div>
+          <div className="opportunity-actions"><a href="mailto:sibbianass@gmail.com" className="primary-btn">{t("opportunity.email")}</a><a href={`${process.env.PUBLIC_URL}/weg.pdf`} download className="outline-btn"><i className="fa-solid fa-download" aria-hidden="true"></i> {t("opportunity.cv")}</a></div>
+        </div>
+        <h2 className="section-title">{t("contact.title")} <span>{t("contact.titleSpan")}</span></h2>
+        <p className="contact-intro">{t("contact.intro")}</p>
+        <div className="contact-layout">
+          <aside className="contact-details" aria-label="Direct contact details">
+            <a href="mailto:sibbianass@gmail.com"><i className="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email</small>sibbianass@gmail.com</span></a>
+            <a href="https://www.linkedin.com/in/anass-sibbi-75778b347/" target="_blank" rel="noreferrer"><i className="fa-brands fa-linkedin-in" aria-hidden="true"></i><span><small>LinkedIn</small>Anass Sibbi</span></a>
+            <a href="https://github.com/ANASS133" target="_blank" rel="noreferrer"><i className="fa-brands fa-github" aria-hidden="true"></i><span><small>GitHub</small>ANASS133</span></a>
+            <div><i className="fa-solid fa-location-dot" aria-hidden="true"></i><span><small>Location</small>{t("contact.location")}</span></div>
+          </aside>
 
         <form ref={formRef} className="contact-card" onSubmit={onSubmit} noValidate>
+          <h3>{t("sendEmail")}</h3>
           <input type="hidden" name="contact_number" value={Date.now()} />
 
           <label htmlFor="name">{t("name")}</label>
@@ -62,8 +72,9 @@ export default function ContactEmailJS() {
           <textarea id="message" name="message" required minLength={5} />
 
           <div className="container-send">
-            <button className="primary-btn" id="btn" type="submit" disabled={status === "sending"}>
-              {status === "sending" ? t("sending") : t("submit")}
+            <button className={`primary-btn ${status === "success" ? "success-active" : ""}`} id="btn" type="submit" disabled={status === "sending"}>
+              <span className="button-label">{status === "sending" ? t("sending") : status === "success" ? t("sent") : t("submit")}</span>
+              <svg className="success-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" /></svg>
             </button>
           </div>
 
@@ -71,8 +82,9 @@ export default function ContactEmailJS() {
             {status === "success" && <p className="success">{t("success")}</p>}
             {status === "error" && <p className="error">{t("error", { error: errorMsg })}</p>}
           </div>
+          <p className="privacy-note"><i className="fa-solid fa-shield-halved" aria-hidden="true"></i>{t("privacy")}</p>
         </form>
-      </div>
-    </center>
+        </div>
+    </section>
   );
 }
