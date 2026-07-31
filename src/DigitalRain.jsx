@@ -5,7 +5,7 @@ const particles = Array.from({ length: 32 }, (_, index) => ({
   delay: -((index * 0.73) % 6.5),
   duration: 3.8 + ((index * 13) % 31) / 10,
   height: 18 + ((index * 19) % 54),
-  opacity: 0.12 + ((index * 7) % 18) / 100,
+  opacity: 0.28 + ((index * 7) % 24) / 100,
   drift: -8 + ((index * 11) % 17),
   blur: index % 5 === 0 ? 1.5 : index % 3 === 0 ? 0.6 : 0
 }));
