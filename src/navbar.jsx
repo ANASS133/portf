@@ -8,6 +8,7 @@ const Header = () => {
   
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useTranslation();
   const toggleMenu = () => setIsOpen(!isOpen);
   useEffect(() => {
@@ -19,6 +20,13 @@ const Header = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const updateHeader = () => setIsScrolled(window.scrollY > 48);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    return () => window.removeEventListener('scroll', updateHeader);
+  }, []);
+
     const { i18n } = useTranslation();
   const cycle = ["en", "de"];
 
@@ -28,7 +36,8 @@ const Header = () => {
     i18n.changeLanguage(nextLang);}
 
   return (
-    <header className="header">
+    <>
+    <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="container">
         <h1 className="logo">
           Sibbi<span className="dot">.</span>
@@ -53,6 +62,10 @@ const Header = () => {
         </nav>
       </div>
     </header>
+    <nav className="section-rail" aria-label="Section progress">
+      {navItems.map(([id, label], index) => <a key={id} href={`#${id}`} className={activeSection === id ? 'active' : ''} aria-label={t(label)} title={t(label)}><span>{String(index + 1).padStart(2, '0')}</span><i aria-hidden="true"></i></a>)}
+    </nav>
+    </>
   );
 };
 

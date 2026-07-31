@@ -6,7 +6,6 @@ const About = () => {
   const { t } = useTranslation();
   const valueCards = t('about.valueCards', { returnObjects: true });
   const principles = t('about.principles', { returnObjects: true });
-  const journey = t('about.journey', { returnObjects: true });
   const faq = t('about.faq', { returnObjects: true });
 
   return (
@@ -42,11 +41,6 @@ const About = () => {
         <div className="principle-grid">{principles.map((principle) => <article key={principle.title}><i className={`fa-solid ${principle.icon}`} aria-hidden="true"></i><div><h4>{principle.title}</h4><p>{principle.text}</p></div></article>)}</div>
       </div>
 
-      <div className="about-journey">
-        <span className="about-eyebrow">{t('about.journeyEyebrow')}</span><h3>{t('about.journeyTitle')}</h3>
-        <div className="journey-track">{journey.map((step, index) => <React.Fragment key={step.title}>{index > 0 && <i className="journey-arrow fa-solid fa-arrow-right" aria-hidden="true"></i>}<article><span>{String(index + 1).padStart(2, '0')}</span><h4>{step.title}</h4><p>{step.text}</p></article></React.Fragment>)}</div>
-      </div>
-
       <div className="about-lower-grid">
         <article className="why-germany"><span className="about-eyebrow">{t('about.whyEyebrow')}</span><h3>{t('about.whyTitle')}</h3><p>{t('about.whyText')}</p><p className="human-note"><i className="fa-solid fa-heart" aria-hidden="true"></i>{t('about.personal')}</p></article>
         <div className="profile-orbit" aria-label={t('about.profileDiagram')}><span className="orbit-center">Anass<br />Sibbi</span><span className="orbit-node node-security">{t('about.security')}</span><span className="orbit-node node-web">Web</span><span className="orbit-node node-mobile">Mobile</span><span className="orbit-node node-german">Deutsch B2</span></div>
@@ -54,7 +48,6 @@ const About = () => {
 
       <div className="about-faq"><span className="about-eyebrow">{t('about.faqEyebrow')}</span><h3>{t('about.faqTitle')}</h3>{faq.map((item) => <details key={item.question}><summary>{item.question}<i className="fa-solid fa-plus" aria-hidden="true"></i></summary><p>{item.answer}</p></details>)}</div>
 
-      <div className="about-cta"><div><span className="about-eyebrow">{t('about.ctaEyebrow')}</span><h3>{t('about.ctaTitle')}</h3></div><div><a href="#experience" className="primary-btn">{t('about.viewExperience')}</a><a href={`${process.env.PUBLIC_URL}/weg.pdf`} download className="outline-btn">{t('about.downloadCv')}</a><a href="#contact" className="about-contact-link">{t('about.contact')} <i className="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div></div>
     </section>
   );
 };

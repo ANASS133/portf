@@ -62,7 +62,7 @@ const Home = () => {
       <div className="hero-architecture" aria-hidden="true"><span>React</span><i></i><span>REST API</span><i></i><span>Spring Boot</span><i></i><span>SQL</span></div>
       <div className="home-content">
         <div className="hero-topline"><span>{greeting}</span><button type="button" onClick={() => setProfileOpen(true)}><i className="fa-solid fa-id-card" aria-hidden="true"></i>{t('home.quickProfile')}</button></div>
-        <div className="availability-badge" tabIndex="0"><span aria-hidden="true"></span>{t('home.badge')}<div className="availability-tooltip" role="tooltip"><b>{t('availability.relocation')}</b><b>{t('availability.german')}</b><b>{t('availability.interviews')}</b></div></div>
+        <div className="availability-badge"><span aria-hidden="true"></span>{t('home.badge')}</div>
         <div className="hero-mode" role="group" aria-label={t('home.viewMode')}><button type="button" className={mode === 'recruiter' ? 'active' : ''} onClick={() => setMode('recruiter')}>{t('home.recruiterView')}</button><button type="button" className={mode === 'developer' ? 'active' : ''} onClick={() => setMode('developer')}>{t('home.developerView')}</button></div>
         <h1>{t('home.hi')}</h1>
         <h3>{t('home.role')}</h3>
