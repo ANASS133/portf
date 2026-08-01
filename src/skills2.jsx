@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 export default function Skills2() {
   const { t } = useTranslation();
-  const core = t('skills.coreItems', { returnObjects: true });
   const groups = t('skills.groups', { returnObjects: true });
   const security = t('skills.securityItems', { returnObjects: true });
   const learning = t('skills.learningItems', { returnObjects: true });
@@ -13,13 +12,6 @@ export default function Skills2() {
     <section className="skills" id="skills">
       <h2 className="section-title">{t("skills.my")} <span>{t("skills.titleSpan")}</span></h2>
       <p className="skills-intro">{t('skills.intro')}</p>
-
-      <div className="core-stack">
-        <div className="skills-heading"><span>{t('skills.coreEyebrow')}</span><h3>{t('skills.coreTitle')}</h3></div>
-        <div className="core-stack-grid">
-          {core.map((skill) => <article key={skill.name}><i className={`${skill.name === 'Laravel' ? 'fa-brands' : 'fa-solid'} ${skill.icon}`} aria-hidden="true"></i><div><h4>{skill.name}</h4><p>{skill.context}</p></div><a href={skill.target} aria-label={`${t('skills.usedInProjects')}: ${skill.name}`}><i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></article>)}
-        </div>
-      </div>
 
       <div className="skills-grid" aria-label={t('skills.supportingTitle')}>
         {groups.map((group) => (

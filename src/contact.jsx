@@ -11,10 +11,11 @@ export default function ContactEmailJS() {
   const formRef = useRef(null);
   const [status, setStatus] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [fallbackHref, setFallbackHref] = useState("");
 
-  const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_vcftogg";
-  const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_r5aonzn";
-  const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "kEDaNeziEhGdo2ygL";
+  const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_rerf15g";
+  const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_r5aonzn";
+  const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "kEDaNeziEhGdo2ygL";
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ export default function ContactEmailJS() {
 
     setStatus("sending");
     setErrorMsg("");
+    setFallbackHref("");
 
     try {
       await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, PUBLIC_KEY);
@@ -37,7 +39,15 @@ export default function ContactEmailJS() {
       setTimeout(() => setStatus(null), 5000);
     } catch (err) {
       console.error("EmailJS error:", err);
-      setErrorMsg(err?.text || err?.message || "Send failed");
+      const providerError = err?.text || err?.message || "Send failed";
+      const formData = new FormData(form);
+      const senderName = formData.get("user_name") || "";
+      const senderEmail = formData.get("user_email") || "";
+      const message = formData.get("message") || "";
+      const subject = encodeURIComponent(`Portfolio message from ${senderName}`);
+      const body = encodeURIComponent(`Name: ${senderName}\nEmail: ${senderEmail}\n\n${message}`);
+      setFallbackHref(`mailto:sibbianass@gmail.com?subject=${subject}&body=${body}`);
+      setErrorMsg(/invalid grant|gmail_api/i.test(providerError) ? t("contact.serviceUnavailable") : t("contact.sendFailed"));
       setStatus("error");
     }
   };
@@ -80,7 +90,7 @@ export default function ContactEmailJS() {
 
           <div aria-live="polite" className="form-status">
             {status === "success" && <p className="success">{t("success")}</p>}
-            {status === "error" && <p className="error">{t("error", { error: errorMsg })}</p>}
+            {status === "error" && <p className="error">{errorMsg} {fallbackHref && <a href={fallbackHref}>{t("contact.emailFallback")}</a>}</p>}
           </div>
           <p className="privacy-note"><i className="fa-solid fa-shield-halved" aria-hidden="true"></i>{t("privacy")}</p>
         </form>

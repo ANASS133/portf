@@ -111,3 +111,12 @@
 @keyframes architectureSignal { from { left: -7px; } to { left: 18px; } }
 @media (hover: none), (pointer: coarse) { .project-card::after { display: none; } }
 @media (prefers-reduced-motion: reduce) { .architecture-flow code, .architecture-arrow { opacity: 1 !important; transform: none !important; animation: none !important; } .architecture-arrow i { display: none; } }
+
+@media (max-width: 480px) {
+  .project-card h3 { font-size: 18px; }
+  .project-card p,
+  .private-label,
+  .case-study summary,
+  .case-study-content p { font-size: 12px; }
+  .project-placeholder i { font-size: 48px; }
+}

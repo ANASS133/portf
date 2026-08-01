@@ -2072,6 +2072,92 @@ html[data-theme="light"] .career-controls button.active {
   box-shadow: 0 5px 14px rgba(0, 112, 151, .18);
 }
 
+/* Light career overview: a compact panel instead of one large white slab. */
+html[data-theme="light"] .career-overview {
+  position: relative;
+  margin-top: 30px;
+  padding: clamp(58px, 6vw, 76px) clamp(24px, 4vw, 58px) 32px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 0, rgba(0, 166, 211, .09), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, .98), rgba(248, 252, 254, .94)) !important;
+  border: 1px solid rgba(15, 91, 121, .14);
+  border-radius: 24px;
+  box-shadow: 0 18px 55px rgba(25, 67, 84, .09);
+}
+
+html[data-theme="light"] .career-overview-heading {
+  max-width: 760px;
+  margin-bottom: clamp(34px, 4vw, 46px);
+}
+
+html[data-theme="light"] .career-overview-heading > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #087da6;
+  letter-spacing: .16em;
+}
+
+html[data-theme="light"] .career-overview-heading > span::before,
+html[data-theme="light"] .career-overview-heading > span::after {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: rgba(0, 143, 189, .34);
+}
+
+html[data-theme="light"] .career-overview-heading h2 {
+  margin: 12px 0 12px;
+  line-height: 1.12;
+}
+
+html[data-theme="light"] .career-overview-heading p {
+  max-width: 680px;
+  margin-inline: auto;
+  line-height: 1.65;
+}
+
+html[data-theme="light"] .career-summary-cards {
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+html[data-theme="light"] .career-summary-cards article {
+  min-height: 92px;
+  padding: 17px 18px;
+  background: rgba(255, 255, 255, .82) !important;
+  border-color: rgba(15, 104, 139, .14) !important;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(30, 78, 98, .055);
+}
+
+html[data-theme="light"] .career-summary-cards i {
+  width: 46px;
+  height: 46px;
+  color: #0087b3;
+  background: linear-gradient(145deg, #e3f6fc, #edf9fc);
+  border: 1px solid rgba(0, 143, 189, .1);
+  border-radius: 12px;
+}
+
+html[data-theme="light"] .career-controls {
+  padding: 10px 12px;
+  background: rgba(232, 244, 249, .76);
+  border-radius: 14px;
+}
+
+@media (max-width: 640px) {
+  html[data-theme="light"] .career-overview {
+    margin-top: 18px;
+    padding: 48px 16px 18px;
+    border-radius: 18px;
+  }
+
+  html[data-theme="light"] .career-summary-cards article { min-height: 82px; }
+  html[data-theme="light"] .career-controls { padding: 10px; }
+}
+
 html[data-theme="light"] .career-nav button {
   color: #587687;
 }
@@ -2089,6 +2175,33 @@ html[data-theme="light"] .career-nav strong {
 }
 
 html[data-theme="light"] .career-nav em { color: #607e8e; }
+
+/* Career responsibilities: keep the expandable panel on the light palette. */
+html[data-theme="light"] .career-responsibilities {
+  border-color: rgba(15,91,121,.16);
+}
+html[data-theme="light"] .career-responsibilities[open] {
+  background: #f7fbfd;
+  border-color: rgba(0,143,189,.22);
+  box-shadow: inset 0 0 0 1px rgba(15,91,121,.04);
+}
+html[data-theme="light"] .career-responsibilities summary,
+html[data-theme="light"] .career-responsibilities[open] summary {
+  color: #294f61;
+}
+html[data-theme="light"] .career-responsibilities summary:hover,
+html[data-theme="light"] .career-responsibilities summary:focus-visible {
+  color: #006f97;
+}
+html[data-theme="light"] .career-responsibilities summary i,
+html[data-theme="light"] .career-responsibilities[open] summary i {
+  color: #008fbd;
+  background: rgba(0,143,189,.08);
+  border-color: rgba(0,143,189,.22);
+}
+html[data-theme="light"] .career-responsibilities ul {
+  color: #587181;
+}
 @media (min-width: 1440px) { .hero-portrait-stage { bottom: 22px; } }
 @media (min-width: 768px) and (max-width: 1023px) { .hero-portrait-stage { bottom: 12px; }.portrait-circuit { opacity: .16; } }
 @media (max-width: 767px) { .hero-portrait-stage { bottom: 6px; animation: portraitPremiumFloatMobile 7.5s cubic-bezier(.45,.05,.55,.95) infinite; }.hero-portrait-stage::before { right: -3%; width: 46%; }.portrait-ambient { animation-duration: 7s; }@keyframes portraitPremiumFloatMobile { 0%,100% { transform: translate3d(50%,0,0); } 50% { transform: translate3d(50%,-4px,0); } } }
@@ -2097,3 +2210,262 @@ html[data-theme="light"] .career-nav em { color: #607e8e; }
 /* Keep the person steady; animate only the surrounding atmosphere. */
 .hero-portrait-stage { animation: none; will-change: auto; }
 @media (max-width: 767px) { .hero-portrait-stage { animation: none; transform: translateX(50%); } }
+
+/* Responsive typography: placed last so it consistently overrides older rules. */
+@media (max-width: 768px) {
+  .home h1,
+  html[lang="de"] .home h1 { font-size: clamp(30px, 8.5vw, 42px); }
+  .home h3,
+  html[lang="de"] .home h3 { font-size: clamp(17px, 4.6vw, 22px); }
+  .home p,
+  .home .hero-description { font-size: clamp(13px, 3.5vw, 15px); }
+  .section-title { font-size: clamp(27px, 7.5vw, 36px); }
+  .about-summary h3,
+  .career-overview-heading h2 { font-size: clamp(25px, 7vw, 34px); }
+  .principles-copy h3,
+  .about-journey > h3,
+  .why-germany h3,
+  .about-faq > h3,
+  .skills-heading h3,
+  .security-skills h3,
+  .career-detail h3 { font-size: clamp(20px, 5.5vw, 27px); }
+  .about-summary .about-lead,
+  .about-text p,
+  .skills-intro { font-size: 14px; }
+  .about-faq details p,
+  .career-impact-box p { font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .logo { font-size: 20px; }
+  .home h1,
+  html[lang="de"] .home h1 { font-size: clamp(28px, 9vw, 36px); }
+  .home h3,
+  html[lang="de"] .home h3 { font-size: clamp(16px, 4.8vw, 19px); }
+  .home p,
+  .home .hero-description { font-size: clamp(12px, 3.7vw, 14px); }
+  .section-title { font-size: clamp(24px, 7.5vw, 31px); }
+  .about-summary h3,
+  .career-overview-heading h2 { font-size: clamp(23px, 7vw, 29px); }
+  .about-summary .about-lead,
+  .about-text p,
+  .skills-intro { font-size: 13px; }
+  .blob-btn,
+  .home .btn-box a { font-size: 12px; }
+}
+
+/* Light FAQ: stronger hierarchy, readable questions, and balanced rhythm. */
+html[data-theme="light"] .about-faq {
+  max-width: 920px;
+  padding: 42px 48px 14px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 0, rgba(0, 166, 211, .08), transparent 32%),
+    rgba(255, 255, 255, .94) !important;
+  border: 1px solid rgba(15, 91, 121, .14);
+  border-radius: 22px;
+  box-shadow: 0 18px 50px rgba(25, 67, 84, .09);
+}
+
+html[data-theme="light"] .about-faq > .about-eyebrow {
+  margin-bottom: 10px;
+  color: #087da6;
+  letter-spacing: .15em;
+}
+
+html[data-theme="light"] .about-faq > h3 {
+  margin-bottom: 26px;
+  color: #102637;
+  line-height: 1.18;
+}
+
+html[data-theme="light"] .about-faq details {
+  border-bottom-color: rgba(15, 91, 121, .14);
+  transition: background .2s ease;
+}
+
+html[data-theme="light"] .about-faq details:first-of-type {
+  border-top: 1px solid rgba(15, 91, 121, .14);
+}
+
+html[data-theme="light"] .about-faq details:hover,
+html[data-theme="light"] .about-faq details[open] {
+  background: rgba(235, 247, 251, .65);
+}
+
+html[data-theme="light"] .about-faq summary {
+  min-height: 66px;
+  padding: 17px 10px;
+  color: #294f61;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+html[data-theme="light"] .about-faq summary:hover,
+html[data-theme="light"] .about-faq summary:focus-visible,
+html[data-theme="light"] .about-faq details[open] summary {
+  color: #006f97;
+  outline: none;
+}
+
+html[data-theme="light"] .about-faq summary i {
+  display: grid;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  color: #008fbd;
+  background: rgba(0, 143, 189, .08);
+  border: 1px solid rgba(0, 143, 189, .16);
+  border-radius: 50%;
+}
+
+html[data-theme="light"] .about-faq details p {
+  max-width: 760px;
+  padding: 0 52px 20px 10px;
+  color: #526f7f;
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  html[data-theme="light"] .about-faq {
+    padding: 32px 18px 8px;
+    border-radius: 18px;
+  }
+
+  html[data-theme="light"] .about-faq > h3 { margin-bottom: 20px; }
+  html[data-theme="light"] .about-faq summary { min-height: 60px; padding-inline: 6px; font-size: 14px; }
+  html[data-theme="light"] .about-faq details p { padding: 0 42px 18px 6px; }
+}
+
+/* Light security skills: direct list text previously kept the dark-theme color. */
+html[data-theme="light"] .security-skills {
+  gap: clamp(28px, 4vw, 52px);
+  padding: clamp(28px, 4vw, 42px);
+  background:
+    radial-gradient(circle at 0 0, rgba(0, 166, 211, .08), transparent 36%),
+    rgba(255, 255, 255, .92) !important;
+  border-left: 3px solid #008fbd !important;
+  border-radius: 0 18px 18px 0;
+}
+
+html[data-theme="light"] .security-skills ul {
+  gap: 12px;
+}
+
+html[data-theme="light"] .security-skills li {
+  min-height: 52px;
+  padding: 14px 16px;
+  color: #294f61;
+  background: #f4fafc !important;
+  border-color: rgba(15, 104, 139, .16) !important;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  box-shadow: 0 5px 16px rgba(31, 80, 101, .045);
+  transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+html[data-theme="light"] .security-skills li:hover {
+  color: #075f7f;
+  background: #eaf7fb !important;
+  border-color: rgba(0, 143, 189, .3) !important;
+  transform: translateY(-2px);
+}
+
+html[data-theme="light"] .security-skills li i {
+  display: grid;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  color: #16884b;
+  background: rgba(35, 176, 91, .1);
+  border-radius: 50%;
+  font-size: 10px;
+}
+
+@media (max-width: 640px) {
+  html[data-theme="light"] .security-skills {
+    gap: 24px;
+    padding: 24px 18px;
+    border-radius: 0 14px 14px 0;
+  }
+
+  html[data-theme="light"] .security-skills ul { gap: 9px; }
+  html[data-theme="light"] .security-skills li { min-height: 48px; padding: 12px 13px; }
+}
+
+/* Light quick-profile drawer: keep every label and value readable. */
+html[data-theme="light"] .profile-drawer-backdrop {
+  background: rgba(25, 52, 65, .34);
+  backdrop-filter: blur(7px);
+}
+
+html[data-theme="light"] .profile-drawer {
+  padding: 32px;
+  background: linear-gradient(180deg, #ffffff, #f4fafc 100%);
+  border-left-color: rgba(0, 143, 189, .24);
+  box-shadow: -24px 0 65px rgba(25, 67, 84, .18);
+}
+
+html[data-theme="light"] .profile-drawer header {
+  padding-bottom: 22px;
+  border-bottom-color: rgba(15, 91, 121, .16);
+}
+
+html[data-theme="light"] .profile-drawer header span {
+  color: #087da6;
+}
+
+html[data-theme="light"] .profile-drawer header h2 {
+  color: #102637;
+}
+
+html[data-theme="light"] .profile-drawer header button {
+  color: #087da6;
+  background: #edf7fa;
+  border-color: rgba(0, 143, 189, .2);
+}
+
+html[data-theme="light"] .profile-drawer header button:hover,
+html[data-theme="light"] .profile-drawer header button:focus-visible {
+  color: #ffffff;
+  background: #008fbd;
+  border-color: #008fbd;
+  outline: none;
+}
+
+html[data-theme="light"] .profile-drawer dl {
+  display: grid;
+  gap: 9px;
+  margin: 22px 0 28px;
+}
+
+html[data-theme="light"] .profile-drawer dl div {
+  padding: 13px 15px;
+  background: rgba(255, 255, 255, .76);
+  border: 1px solid rgba(15, 104, 139, .14);
+  border-radius: 10px;
+  box-shadow: 0 5px 16px rgba(31, 80, 101, .04);
+}
+
+html[data-theme="light"] .profile-drawer dt {
+  margin-bottom: 4px;
+  color: #557687;
+  font-weight: 700;
+}
+
+html[data-theme="light"] .profile-drawer dd {
+  color: #17384a;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+@media (max-width: 460px) {
+  html[data-theme="light"] .profile-drawer { padding: 24px 18px; }
+  html[data-theme="light"] .profile-drawer dl { gap: 7px; }
+  html[data-theme="light"] .profile-drawer dl div { padding: 12px 13px; }
+}

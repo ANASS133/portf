@@ -46,6 +46,15 @@
   .contact-card { padding: 22px; }
 }
 
+@media (max-width: 480px) {
+  .contact-card h3 { font-size: 19px; }
+  .opportunity-cta h2 { font-size: clamp(21px, 7vw, 27px); }
+  .contact-card label,
+  .contact-card input,
+  .contact-card textarea,
+  .contact-card button { font-size: 12px; }
+}
+
 .contact-intro { max-width: 600px; margin: -32px auto 42px; color: #9eb1c2; text-align: center; }
 .contact-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 28px; align-items: start; }
 .contact-details { display: grid; gap: 12px; }
@@ -275,3 +284,12 @@ html[data-theme="light"] .contact-card textarea:focus {
 }
 
 html[data-theme="light"] .privacy-note { color: #648191 !important; }
+
+.form-status .error a {
+  display: inline;
+  margin-left: 4px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
