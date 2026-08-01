@@ -1552,7 +1552,7 @@ html[lang="de"] .home h3 { font-size: clamp(20px, 1.85vw, 27px); }
 .career-view-toggle button { display: inline-flex; align-items: center; gap: 7px; }.career-controls button:hover { color: white; }.career-controls button.active { color: #eefbff; background: #0c2c40; border-color: rgba(0,194,255,.24); }
 .career-filters button { min-height: 34px; padding: 6px 10px; font-size: 11px; }
 .career-section { border-bottom: 1px solid var(--line); }
-.career-split { display: grid; grid-template-columns: minmax(250px,.78fr) minmax(0,1.55fr); gap: 28px; align-items: start; }
+.career-split { display: grid; grid-template-columns: minmax(250px,.78fr) minmax(0,1.55fr); gap: 28px; align-items: start; margin-bottom:45px}
 .career-nav { position: relative; display: grid; gap: 7px; padding-left: 19px; }
 .career-nav::before { content: ''; position: absolute; left: 6px; top: 12px; bottom: 12px; width: 2px; background: linear-gradient(var(--accent),rgba(0,194,255,.1)); }
 .career-nav button { position: relative; width: 100%; display: grid; grid-template-columns: 1fr; gap: 3px; padding: 14px 15px; color: #8da4b2; text-align: left; background: transparent; border: 1px solid transparent; border-radius: 10px; cursor: pointer; transition: background .25s,border-color .25s,transform .25s; }
@@ -2514,4 +2514,54 @@ html[data-theme="light"] .hero-rain i {
   }
 
   html[data-theme="light"] .hero-rain { opacity: .64; }
+}
+
+/* Light profile diagram: stronger rings and clearer connected skills. */
+html[data-theme="light"] .profile-orbit {
+  background:
+    radial-gradient(circle at center, rgba(0, 157, 206, .13) 0, rgba(0, 157, 206, .055) 30%, transparent 57%),
+    linear-gradient(145deg, #ffffff, #eef7fa) !important;
+  border-color: rgba(0, 119, 160, .24) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .8), 0 14px 36px rgba(31, 80, 101, .08);
+}
+
+html[data-theme="light"] .profile-orbit::before,
+html[data-theme="light"] .profile-orbit::after {
+  border-width: 1.5px;
+  border-color: rgba(0, 133, 178, .34);
+  box-shadow: 0 0 18px rgba(0, 143, 189, .06);
+}
+
+html[data-theme="light"] .profile-orbit::after {
+  border-style: solid;
+  border-color: rgba(0, 143, 189, .25);
+}
+
+html[data-theme="light"] .orbit-center {
+  color: #ffffff;
+  background: linear-gradient(145deg, #087fa8, #07506f);
+  border: 2px solid rgba(0, 169, 223, .55);
+  box-shadow: 0 10px 26px rgba(0, 112, 151, .22), 0 0 0 7px rgba(0, 143, 189, .07);
+}
+
+html[data-theme="light"] .orbit-node {
+  padding: 8px 12px;
+  color: #174b62;
+  background: rgba(255, 255, 255, .96);
+  border-color: rgba(0, 126, 169, .28);
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 7px 18px rgba(31, 80, 101, .12);
+}
+
+html[data-theme="light"] .orbit-node::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 7px;
+  background: #00a1d2;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(0, 161, 210, .1);
+  vertical-align: 1px;
 }
