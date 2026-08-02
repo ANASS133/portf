@@ -56,16 +56,10 @@ const Header = () => {
 
         <nav className={`nav ${isOpen ? 'nav-open' : ''}`}>
           {navItems.map(([id, label]) => <a key={id} href={`#${id}`} onClick={() => setIsOpen(false)} className={`nav-link ${activeSection === id ? 'active' : ''}`}>{t(label)}</a>)}
-          <button type="button" className="theme-toggle" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? 'Enable light mode' : 'Enable dark mode'} title={theme === 'dark' ? 'Light mode' : 'Dark mode'}><i className={`fa-solid ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} aria-hidden="true"></i></button>
-          <button
-      type="button"
-      onClick={next}
-      aria-label="Change language"
-      title="Change language"
-      className="lang"
-    >
-    {i18n.language?.toUpperCase() || "EN"}
-    </button>
+          <div className="nav-tools">
+            <button type="button" className="theme-toggle" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? 'Enable light mode' : 'Enable dark mode'} title={theme === 'dark' ? 'Light mode' : 'Dark mode'}><i className={`fa-solid ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} aria-hidden="true"></i></button>
+            <button type="button" onClick={next} aria-label="Change language" title="Change language" className="lang">{i18n.language?.toUpperCase() || "EN"}</button>
+          </div>
         </nav>
       </div>
     </header>

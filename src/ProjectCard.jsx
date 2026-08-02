@@ -21,7 +21,7 @@ function ProjectCard({ project, direction = 'left' }) {
       <div className="card-content">
         <h3>{project.title}</h3>
         <p>{project.description}</p>
-        <ul className="tech-list">{project.tech.map((tech) => <li key={tech}>{tech}</li>)}</ul>
+        <ul className="tech-list">{project.tech.map((tech, index) => <li key={tech} className={index > 2 ? 'tech-extra' : ''}>{tech}</li>)}{project.tech.length > 3 && <li className="tech-more">+{project.tech.length - 3}</li>}</ul>
         <details className="case-study">
           <summary>{t('projects.details')} <i className="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
           <div className="case-study-content">
