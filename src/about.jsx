@@ -42,8 +42,7 @@ const About = () => {
         <div className="principle-grid">{principles.map((principle) => <article key={principle.title}><i className={`fa-solid ${principle.icon}`} aria-hidden="true"></i><div><h4>{principle.title}</h4><p>{principle.text}</p></div></article>)}</div>
       </div>
 
-      <div className="about-lower-grid">
-        <article className="why-germany"><span className="about-eyebrow">{t('about.whyEyebrow')}</span><h3>{t('about.whyTitle')}</h3><p>{t('about.whyText')}</p><p className="human-note"><i className="fa-solid fa-heart" aria-hidden="true"></i>{t('about.personal')}</p></article>
+      <div className="about-lower-grid about-profile-only">
         <div className="profile-orbit" aria-label={t('about.profileDiagram')}><span className="orbit-center">Anass<br />Sibbi</span><span className="orbit-node node-security">{t('about.security')}</span><span className="orbit-node node-web">Web</span><span className="orbit-node node-mobile">Mobile</span><span className="orbit-node node-german">Deutsch B2</span></div>
       </div>
 
