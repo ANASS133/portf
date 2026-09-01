@@ -46,7 +46,7 @@ const Header = () => {
     <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="container">
         <h1 className="logo">
-          Sibbi<span className="dot">.</span>
+          Anass Sibbi<span className="dot">.</span>
         </h1>
 
         {/* Menu icon for mobile */}

@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import './nav.css';
+import SectionHeader from './SectionHeader';
 
 const certificateFiles = [
   '/certificates/telc-german-b2.pdf',
@@ -40,6 +41,7 @@ export default function Credentials() {
 
   return (
     <section className="credentials" id="certificates">
+      <SectionHeader number="06" label={t('sectionHeaders.credentials.label')} title={t('sectionHeaders.credentials.title')} subtitle={t('sectionHeaders.credentials.subtitle')} />
       <article className="credential-card">
         <h2><i className="fa-solid fa-language" aria-hidden="true"></i> {t('credentials.languages')}</h2>
         <ul>{languages.map((item) => <li key={item}>{item}</li>)}</ul>

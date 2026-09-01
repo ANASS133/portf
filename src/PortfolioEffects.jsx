@@ -9,7 +9,7 @@ export default function PortfolioEffects() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const touch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
     const sections = document.querySelectorAll('main section, .app > section, .about, .education, .skills, .projects, .credentials, .form');
-    const titles = document.querySelectorAll('.section-title');
+    const titles = document.querySelectorAll('.section-header');
     const timelineItems = document.querySelectorAll('.education-content');
 
     if (reduced) {

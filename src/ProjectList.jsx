@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 import './ProjectCard.css';
 import { useTranslation } from 'react-i18next';
+import SectionHeader from './SectionHeader';
 
 const projectMeta = [
   { image: process.env.PUBLIC_URL + '/image.png', liveLink: 'https://weather-sigma-jet.vercel.app/' },
@@ -29,7 +30,7 @@ const ProjectList = () => {
   const projects = projectOrder.map((index) => ({ ...localizedProjects[index], ...projectMeta[index] }));
   return (
     <section className="projects" id="portfolio">
-      <h2 className="section-title">{t('projects.title')} <span>{t('projects.titleSpan')}</span></h2>
+      <SectionHeader number="05" label={t('sectionHeaders.projects.label')} title={t('sectionHeaders.projects.title')} subtitle={t('sectionHeaders.projects.subtitle')} />
       <div className="project-section">
         {projects.map((project, index) => <ProjectCard key={project.title} project={project} direction={index % 2 === 0 ? 'left' : 'right'} />)}
       </div>

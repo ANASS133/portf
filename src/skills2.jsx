@@ -1,6 +1,7 @@
 import React from 'react';
 import './nav.css';
 import { useTranslation } from 'react-i18next';
+import SectionHeader from './SectionHeader';
 
 export default function Skills2() {
   const { t } = useTranslation();
@@ -10,8 +11,7 @@ export default function Skills2() {
 
   return (
     <section className="skills" id="skills">
-      <h2 className="section-title">{t("skills.my")} <span>{t("skills.titleSpan")}</span></h2>
-      <p className="skills-intro">{t('skills.intro')}</p>
+      <SectionHeader number="04" label={t('sectionHeaders.skills.label')} title={t('sectionHeaders.skills.title')} subtitle={t('skills.intro')} />
 
       <div className="skills-grid" aria-label={t('skills.supportingTitle')}>
         {groups.map((group) => (

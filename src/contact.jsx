@@ -5,6 +5,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./contact.css";
 import { useTranslation } from "react-i18next";
+import SectionHeader from "./SectionHeader";
 
 export default function ContactEmailJS() {
   const { t } = useTranslation();
@@ -54,12 +55,11 @@ export default function ContactEmailJS() {
 
   return (
     <section className="form" id="contact">
+        <SectionHeader number="07" label={t('sectionHeaders.contact.label')} title={t('sectionHeaders.contact.title')} subtitle={t('sectionHeaders.contact.subtitle')} />
         <div className="opportunity-cta">
           <div><span className="eyebrow">Germany</span><h2>{t("opportunity.title")}</h2><p>{t("opportunity.text")}</p></div>
           <div className="opportunity-actions"><a href="mailto:sibbianass@gmail.com" className="primary-btn">{t("opportunity.email")}</a><a href={`${process.env.PUBLIC_URL}/weg.pdf`} download className="outline-btn"><i className="fa-solid fa-download" aria-hidden="true"></i> {t("opportunity.cv")}</a></div>
         </div>
-        <h2 className="section-title">{t("contact.title")} <span>{t("contact.titleSpan")}</span></h2>
-        <p className="contact-intro">{t("contact.intro")}</p>
         <div className="contact-layout">
           <aside className="contact-details" aria-label="Direct contact details">
             <a href="mailto:sibbianass@gmail.com"><i className="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email</small>sibbianass@gmail.com</span></a>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './nav.css';
 import { useTranslation } from 'react-i18next';
+import SectionHeader from './SectionHeader';
 
 const About = () => {
   const { t } = useTranslation();
@@ -10,7 +11,7 @@ const About = () => {
 
   return (
     <section className="about" id="about">
-      <h2 className="section-title">{t('about.title')} <span>{t('about.titleSpan')}</span></h2>
+      <SectionHeader number="01" label={t('sectionHeaders.about.label')} title={t('sectionHeaders.about.title')} subtitle={t('sectionHeaders.about.subtitle')} />
 
       <div className="about-intro">
         <figure className="about-portrait">
