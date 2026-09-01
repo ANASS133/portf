@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './nav.css';
 import { useTranslation } from 'react-i18next';
 
@@ -29,33 +29,19 @@ function CareerSection({ id, title, items, mode, selected, setSelected, labels }
 
 export default function Journey() {
   const { t } = useTranslation();
-  const [mode, setMode] = useState(() => localStorage.getItem('careerView') || 'timeline');
-  const [filter, setFilter] = useState('All');
   const [selectedExperience, setSelectedExperience] = useState('exp0');
   const [selectedEducation, setSelectedEducation] = useState('edu0');
   const experienceMeta = t('career.experienceMeta', { returnObjects: true });
   const educationMeta = t('career.educationMeta', { returnObjects: true });
   const labels = t('career.labels', { returnObjects: true });
-  const filters = ['All', 'React', 'Spring Boot', 'Flutter', 'Laravel'];
 
   const makeItems = (keys, metadata) => keys.map((key, index) => ({ key, date: t(`journey.${key}.date`), title: t(`journey.${key}.title`), subtitle: t(`journey.${key}.subtitle`), items: t(`journey.${key}.items`, { returnObjects: true }), ...metadata[index] }));
   const experiences = makeItems(experienceKeys, experienceMeta);
   const education = makeItems(educationKeys, educationMeta);
-  const filteredExperiences = filter === 'All' ? experiences : experiences.filter((item) => item.tags.includes(filter));
-  const filteredEducation = filter === 'All' ? education : education.filter((item) => item.tags.includes(filter));
-
-  useEffect(() => { localStorage.setItem('careerView', mode); }, [mode]);
-  useEffect(() => { if (filteredExperiences.length && !filteredExperiences.some((item) => item.key === selectedExperience)) setSelectedExperience(filteredExperiences[0].key); if (filteredEducation.length && !filteredEducation.some((item) => item.key === selectedEducation)) setSelectedEducation(filteredEducation[0].key); }, [filter, filteredExperiences, filteredEducation, selectedExperience, selectedEducation]);
 
   return <div className="career-system">
-    <section className="career-overview" aria-label={t('career.overviewLabel')}>
-      <div className="career-overview-heading"><span>{t('career.eyebrow')}</span><h2>{t('career.title')}</h2><p>{t('career.intro')}</p></div>
-      <div className="career-summary-cards">{t('career.summary', { returnObjects: true }).map((item) => <article key={item.label}><i className={`fa-solid ${item.icon}`} aria-hidden="true"></i><div><small>{item.label}</small><strong>{item.value}</strong></div></article>)}</div>
-      <div className="career-controls"><div className="career-view-toggle" role="group" aria-label={t('career.viewLabel')}><button type="button" className={mode === 'timeline' ? 'active' : ''} onClick={() => setMode('timeline')}><i className="fa-solid fa-timeline" aria-hidden="true"></i>{t('career.timeline')}</button><button type="button" className={mode === 'compact' ? 'active' : ''} onClick={() => setMode('compact')}><i className="fa-solid fa-table-cells-large" aria-hidden="true"></i>{t('career.compact')}</button></div><div className="career-filters" aria-label={t('career.filterLabel')}>{filters.map((item) => <button key={item} type="button" className={filter === item ? 'active' : ''} onClick={() => setFilter(item)}>{item === 'All' ? t('career.all') : item}</button>)}</div></div>
-    </section>
-
-    <CareerSection id="experience" title={t('journey.experience')} items={filteredExperiences} mode={mode} selected={selectedExperience} setSelected={setSelectedExperience} labels={labels} />
-    <CareerSection id="education" title={t('career.educationTitle')} items={filteredEducation} mode={mode} selected={selectedEducation} setSelected={setSelectedEducation} labels={labels} />
+    <CareerSection id="experience" title={t('journey.experience')} items={experiences} mode="timeline" selected={selectedExperience} setSelected={setSelectedExperience} labels={labels} />
+    <CareerSection id="education" title={t('career.educationTitle')} items={education} mode="timeline" selected={selectedEducation} setSelected={setSelectedEducation} labels={labels} />
 
   </div>;
 }
