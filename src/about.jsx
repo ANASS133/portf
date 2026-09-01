@@ -42,10 +42,6 @@ const About = () => {
         <div className="principle-grid">{principles.map((principle) => <article key={principle.title}><i className={`fa-solid ${principle.icon}`} aria-hidden="true"></i><div><h4>{principle.title}</h4><p>{principle.text}</p></div></article>)}</div>
       </div>
 
-      <div className="about-lower-grid about-profile-only">
-        <div className="profile-orbit" aria-label={t('about.profileDiagram')}><span className="orbit-center">Anass<br />Sibbi</span><span className="orbit-node node-security">{t('about.security')}</span><span className="orbit-node node-web">Web</span><span className="orbit-node node-mobile">Mobile</span><span className="orbit-node node-german">Deutsch B2</span></div>
-      </div>
-
       <div className="about-faq"><span className="about-eyebrow">{t('about.faqEyebrow')}</span><h3>{t('about.faqTitle')}</h3>{faq.map((item) => <details key={item.question}><summary>{item.question}<i className="fa-solid fa-plus" aria-hidden="true"></i></summary><p>{item.answer}</p></details>)}</div>
 
     </section>
